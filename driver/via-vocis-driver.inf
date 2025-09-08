@@ -1,0 +1,10 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+Provider=%TapzCrew%
+
+[SourceDisksFiles.amd64]
+via-vocis-driver.sys = 1
+
+[strings]
+TapzCrew = "TapzCrew"

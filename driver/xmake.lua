@@ -1,6 +1,8 @@
 target("via-vocis-driver", function()
   set_languages("c++26")
   add_files("src/*.cpp")
+  add_files("src/*.rc")
+  add_files("*.inf")
   add_rules("wdk.driver", "wdk.env.kmdf")
   set_policy("build.c++.modules", true)
   set_policy("build.c++.modules.std", false)

@@ -8,7 +8,6 @@ auto driver_unload_event(WDFDRIVER) -> void {
 
 auto driver_main() -> NTSTATUS {
     DbgPrint("Driver loaded\n");
-
     return STATUS_SUCCESS;
 }
 
