@@ -1,4 +1,4 @@
-target("via-covis-qt", function()
+target("via-vocis-qt", function()
   set_languages("c++26")
   add_files("src/*.cpp")
   set_policy("build.c++.modules", true)
