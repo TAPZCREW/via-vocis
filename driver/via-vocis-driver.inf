@@ -1,10 +1,18 @@
 [Version]
 Signature="$WINDOWS NT$"
-Class=System
+Class=MEDIA
 Provider=%TapzCrew%
+
+[Manufacturer]
+%ManufacturerName%=via-vocis,NT$ARCH$
+
+[via-vocis.NT$ARCH$]
+%via-vocis.DeviceDesc%=via-vocis-device, Root\via-vocis-device
 
 [SourceDisksFiles.amd64]
 via-vocis-driver.sys = 1
 
 [strings]
 TapzCrew = "TapzCrew"
+ManufacturerName="TapzCrew"
+DeviceDesc= "Via vocis virtual audio device"
