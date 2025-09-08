@@ -1,0 +1,5 @@
+target("via-covis-cli", function()
+  set_languages("c++26")
+  add_files("src/*.cpp")
+  set_policy("build.c++.modules", true)
+end)

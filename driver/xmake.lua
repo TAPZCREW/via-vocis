@@ -1,0 +1,8 @@
+target("via-covis-driver", function()
+  set_languages("c++26")
+  add_files("src/*.cpp")
+  add_rules("wdk.driver", "wdk.env.kmdf")
+  set_policy("build.c++.modules", true)
+  set_policy("build.c++.modules.std", false)
+  set_exceptions("no-cxx")
+end)
