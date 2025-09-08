@@ -1,9 +1,13 @@
 #include <windows.h>
 #include <ntverp.h>
 
-#define VER_FILETYPE             VFT_DRV
-#define VER_FILESUBTYPE          VFT2_DRV_SYSTEM
-#define VER_FILEDESCRIPTION_STR  "Via vocis virtual audio device driver"
-#define VER_INTERNALNAME_STR     "via-vocis-driver.sys"
+# define VER_FILETYPE                VFT_DRV
+#define VER_FILESUBTYPE              VFT2_DRV_SOUND
+#define VER_FILEDESCRIPTION_STR      "Via vocis virtual audio device driver"
+#define VER_INTERNALNAME_STR         "via-vocis-driver.sys"
+#define VER_ORIGINALFILENAME_STR     "via-vocis-driver.sys"
+
+#define VER_LEGALCOPYRIGHT_YEARS "2025"
+#define VER_LEGALCOPYRIGHT_STR   "Copyright (C) Tapzcrew." VER_LEGALCOPYRIGHT_YEARS
 
 #include "common.ver"
