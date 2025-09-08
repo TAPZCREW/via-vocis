@@ -2,16 +2,17 @@
 
 #include <wdf.h>
 
-auto driver_unload_event(WDFDRIVER) -> void {
-    DbgPrint("Driver unloaded\n");
-}
-
 auto driver_main() -> NTSTATUS {
-    DbgPrint("Driver loaded\n");
+    DbgPrint("Via vocis: Driver loaded\n");
     return STATUS_SUCCESS;
 }
 
-extern "C" auto DriverEntry(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_path)
+auto driver_exit(DRIVER_OBJECT* driver_object) {
+    DbgPrint("Via vocis: Driver stopped\n");
+}
+
+extern "C" auto DriverEntry(DRIVER_OBJECT* driver_object, UNICODE_STRING* registry_path)
   -> NTSTATUS {
+    driver_object->DriverUnload = driver_exit;
     return driver_main();
 }
