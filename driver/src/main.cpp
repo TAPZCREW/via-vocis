@@ -2,17 +2,25 @@
 
 #include <wdf.h>
 
-auto driver_main() -> NTSTATUS {
-    DbgPrint("Via vocis: Driver loaded\n");
-    return STATUS_SUCCESS;
-}
+import device;
+import log;
 
-auto driver_exit(DRIVER_OBJECT* driver_object) {
-    DbgPrint("Via vocis: Driver stopped\n");
-}
+namespace via {
+    auto driver_main() -> NTSTATUS {
+        debug_logln("Driver loaded");
+
+        add_device();
+
+        return STATUS_SUCCESS;
+    }
+
+    auto driver_exit(DRIVER_OBJECT* driver_object) {
+        debug_logln("Driver stopped");
+    }
+} // namespace via
 
 extern "C" auto DriverEntry(DRIVER_OBJECT* driver_object, UNICODE_STRING* registry_path)
   -> NTSTATUS {
-    driver_object->DriverUnload = driver_exit;
-    return driver_main();
+    driver_object->DriverUnload = via::driver_exit;
+    return via::driver_main();
 }
