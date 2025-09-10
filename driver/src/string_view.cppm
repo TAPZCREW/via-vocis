@@ -1,7 +1,7 @@
 module;
 
-#include <cstdint>
-#include <cstring>
+#include <stdint.h>
+#include <string.h>
 
 #include <ntddk.h>
 
@@ -29,7 +29,7 @@ namespace via {
     constexpr StringView::StringView(const char* str) : m_data { str }, m_size { 0 } {
         if consteval {
             auto c = str;
-            while (c != '\0') {
+            while (*c != '\0') {
                 m_size += 1;
                 ++c;
             }
