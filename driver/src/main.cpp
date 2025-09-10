@@ -9,9 +9,15 @@ namespace via {
     auto driver_main() -> NTSTATUS {
         debug_logln("Driver loaded");
 
-        add_device();
-
-        return STATUS_SUCCESS;
+        return *add_device()
+                  .map([](auto) static {
+                      debug_logln("Device added!");
+                      return STATUS_SUCCESS;
+                  })
+                  .map_error([](NTSTATUS error) static {
+                      debug_logln("Failed to add device!");
+                      return error;
+                  });
     }
 
     auto driver_exit(DRIVER_OBJECT* driver_object) {
