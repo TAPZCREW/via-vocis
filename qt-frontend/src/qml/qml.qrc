@@ -6,6 +6,7 @@
         <file>MainView/qmldir</file>
         <file>MainView/MainView.qml</file>
         <file>MainView/Channel.qml</file>
+        <file>MainView/ProcessEntry.qml</file>
 
     </qresource>
 </RCC>

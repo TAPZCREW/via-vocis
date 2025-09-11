@@ -5,11 +5,15 @@ import MainView;
 
 ApplicationWindow {
     title: "Via Vocis"
-    width: 800
-    height: 600
     visible: true
 
-    MainView {
+    minimumWidth: 800
+    minimumHeight: 600
+
+    Pane {
         anchors.fill: parent
+        MainView {
+            anchors.fill: parent
+        }
     }
 }
