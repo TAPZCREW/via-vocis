@@ -1,0 +1,3 @@
+module MainView
+MainView 1.0 MainView.qml
+MainView.Channel 1.0 Channel.qml

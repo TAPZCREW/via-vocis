@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file alias="main">main.qml</file>
+
+        <!-- MainView -->
+        <file>MainView/qmldir</file>
+        <file>MainView/MainView.qml</file>
+        <file>MainView/Channel.qml</file>
+
+    </qresource>
+</RCC>
