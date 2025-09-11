@@ -50,6 +50,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup NuGet 
+        uses: NuGet/setup-nuget@v1 
+
+      - name: Restore NuGet packages 
+        run: nuget restore .\packages.config -PackagesDirectory .\packages\
+
       - name: Set XMake env
         run: |
           echo "XMAKE_ROOTDIR=${{ github.workspace }}/.xmake-cache" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
@@ -72,7 +78,7 @@ jobs:
         if: ${{ !steps.restore-xmakecache.outputs.cache-hit }}
         uses: xmake-io/github-action-setup-xmake@v1
         with:
-          xmake-version: Arthapz/xmake#branch@enable-custom-wdk-path
+          xmake-version: Arthapz/xmake#branch@dev2
           actions-cache-folder: '.xmake-cache'
 
       - name: Cache XMake
@@ -112,6 +118,10 @@ jobs:
       - name: Extract LLVM
         run: |
           7z x "${{ github.workspace }}/llvm.7z" -o"${{ github.workspace }}/llvm" `
+
+      - name: add LLVM to PATH
+        shell: bash
+        run: |
           echo "${{ github.workspace }}/llvm" >> $GITHUB_PATH
 
       - name: Cache LLVM
