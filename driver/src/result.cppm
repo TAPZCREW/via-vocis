@@ -2,8 +2,8 @@ module;
 
 #include <string.h>
 
-#ifdef __has_builtin
-// #define HAS_HAS_BUILTIN
+#ifdef __clang__
+    #define HAS_BUILTINS
 #endif
 
 export module result;
@@ -38,7 +38,7 @@ namespace via::meta::details {
         using Type = T;
     };
 
-#ifdef __clang__
+#ifdef HAS_BUILTINS
     template<typename T>
     static constexpr auto IsConst = __is_const(T);
 #else
@@ -49,7 +49,7 @@ namespace via::meta::details {
     static constexpr auto IsConst<const T> = true;
 #endif
 
-#ifdef __clang__
+#ifdef HAS_BUILTINS
     template<typename T>
     static constexpr auto IsRValueReference = __is_rvalue_reference(T);
 #else
@@ -60,7 +60,7 @@ namespace via::meta::details {
     static constexpr auto IsRValueReference<T&&> = true;
 #endif
 
-#ifdef __clang__
+#ifdef HAS_BUILTINS
     template<typename T>
     static constexpr auto IsLValueReference = __is_lvalue_reference(T);
 #else
@@ -71,7 +71,7 @@ namespace via::meta::details {
     static constexpr auto IsLValueReference<T&> = true;
 #endif
 
-#ifdef __clang__
+#ifdef HAS_BUILTINS
     template<typename T>
     static constexpr auto IsReference = __is_reference(T);
 #else
@@ -79,7 +79,7 @@ namespace via::meta::details {
     static constexpr auto IsReference = IsLValueReference<T> or IsRValueReference<T>;
 #endif
 
-#ifdef __clang__
+#ifdef HAS_BUILTINS
     template<typename T, typename U>
     static constexpr auto Is = __is_same(T, U);
 #else
@@ -90,7 +90,7 @@ namespace via::meta::details {
     static constexpr auto Is<T, T> = true;
 #endif
 
-#ifdef __clang__
+#ifdef HAS_BUILTINS
     template<typename T>
     static constexpr auto Is<T, void> = __is_void(T);
 #endif
